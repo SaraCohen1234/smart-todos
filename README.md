@@ -43,7 +43,8 @@ smart-todos/
 ├── CLAUDE.md                      # הנחיות לעבודה עם Claude Code
 ├── GIT_WORKFLOW.md                # כללי עבודה עם Git
 ├── README.md
-└── index.html                     # נקודת הכניסה
+├── index.html                     # נקודת הכניסה
+└── tokens.css                     # משתני עיצוב
 ```
 
 ## הורדה והרצת הפרויקט

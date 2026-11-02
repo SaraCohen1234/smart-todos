@@ -1,0 +1,45 @@
+:root {
+  color-scheme: light;
+  --color-page: #f4f6fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8f9fc;
+  --color-border: #e7eaf1;
+  --color-border-strong: #d7dce7;
+  --color-text: #20243a;
+  --color-text-muted: #777e91;
+  --color-text-subtle: #9ba1b1;
+  --color-primary: #6258e8;
+  --color-primary-hover: #5147d6;
+  --color-primary-soft: #f0efff;
+  --color-danger: #d95762;
+  --color-transparent: transparent;
+  --color-backdrop: rgb(25 28 43 / 48%);
+  --color-shadow: rgb(30 34 56 / 14%);
+
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-12: 48px;
+
+  --size-icon: 20px;
+  --size-priority-icon: 38px;
+  --size-modal-max: 680px;
+  --size-textarea-min-height: 96px;
+  --size-field-height: 46px;
+  --size-button-height: 44px;
+  --size-border: 1px;
+  --radius-small: 8px;
+  --radius-medium: 12px;
+  --radius-large: 18px;
+  --shadow-modal: 0 24px 80px var(--color-shadow);
+  --font-size-small: 12px;
+  --font-size-body: 14px;
+  --font-size-icon: 16px;
+  --font-size-title: 20px;
+  --font-size-score: 28px;
+  --line-height-body: 1.55;
+}
