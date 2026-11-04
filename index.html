@@ -1,11 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="משימות - ניהול משימות חכם">
+    <title>משימות | כניסה לחשבון</title>
+
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/auth.css">
+
+    <script src="scripts/auth.js" defer></script>
 </head>
+
 <body>
-    
+    <main class="auth-layout">
+
+        <!-- צד ימין: טופס כניסה והרשמה -->
+        <section class="auth-section">
+            <div class="auth-container">
+
+                <a class="brand" href="#" aria-label="משימות">
+                    <span class="brand-icon" aria-hidden="true">✓</span>
+                    <span>משימות</span>
+                </a>
+
+                <header class="auth-heading">
+                    <h1 id="form-title">כניסה לחשבון</h1>
+                    <p id="form-subtitle">
+                        המשימות שלך, מתועדפות אוטומטית לפי מה שחשוב באמת.
+                    </p>
+                </header>
+
+                <div class="auth-tabs" role="tablist" aria-label="בחירת פעולה">
+                    <button
+                        class="tab-button active"
+                        id="login-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="auth-form"
+                        data-mode="login">
+                        כניסה
+                    </button>
+
+                    <button
+                        class="tab-button"
+                        id="register-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="auth-form"
+                        data-mode="register">
+                        הרשמה
+                    </button>
+                </div>
+
+                <form id="auth-form" novalidate>
+
+                    <div class="form-field">
+                        <label for="email">אימייל</label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="name@example.com"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="password">סיסמה</label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="הכניסו סיסמה"
+                            autocomplete="current-password"
+                            required>
+                        <span class="field-hint">לפחות 8 תווים</span>
+                    </div>
+
+                    <div class="form-options" id="login-options">
+                        <label class="remember-option">
+                            <input type="checkbox" id="remember" name="remember">
+                            <span>זכור אותי</span>
+                        </label>
+
+                        <button
+                            class="text-button"
+                            type="button"
+                            id="forgot-password">
+                            שכחתי סיסמה
+                        </button>
+                    </div>
+
+                    <div
+                        class="error-message"
+                        id="error-message"
+                        role="alert"
+                        aria-live="polite"
+                        hidden>
+                        <span class="error-icon" aria-hidden="true">⚠</span>
+                        <span id="error-text">
+                            האימייל או הסיסמה שגויים. נסו שוב.
+                        </span>
+                    </div>
+
+                    <button
+                        class="submit-button"
+                        id="submit-button"
+                        type="submit">
+                        <span class="button-text">כניסה</span>
+                        <span class="loading-spinner" aria-hidden="true"></span>
+                    </button>
+
+                </form>
+
+                <p class="auth-footer">
+                    <span id="footer-text">אין לך חשבון עדיין?</span>
+                    <button
+                        class="text-button"
+                        id="footer-switch"
+                        type="button">
+                        להרשמה
+                    </button>
+                </p>
+
+            </div>
+        </section>
+
+        <!-- צד שמאל: פאנל כחול וכרטיסי משימות -->
+        <aside class="promo-section">
+            <div class="promo-content">
+
+                <header class="promo-heading">
+                    <h2>במה לעבוד עכשיו?</h2>
+
+                    <p class="promo-description">
+                        המערכת מתעדפת עבורך את המשימות החשובות ביותר,
+                        כדי שתדע במה כדאי להתמקד עכשיו ומה דורש את תשומת הלב שלך.
+                    </p>
+                </header>
+
+                <div class="example-cards">
+
+                    <!-- משימה ראשונה: באיחור -->
+                    <article class="example-card overdue">
+                        <div class="card-top">
+                            <div class="card-leading">
+                                <input
+                                    class="card-checkbox"
+                                    type="checkbox"
+                                    aria-label="סמן משימה כהושלמה">
+
+                                <button
+                                    class="card-menu"
+                                    type="button"
+                                    aria-label="אפשרויות למשימה">
+                                    ⋯
+                                </button>
+                            </div>
+
+                            <span class="card-score">92</span>
+                        </div>
+
+                        <h3>להשלים את המשימה החשובה ביותר</h3>
+
+                        <div class="card-tags">
+                            <span class="card-tag warning">באיחור</span>
+                        </div>
+
+                        <div class="card-meta">
+                            <span>◷ מועד יעד: אתמול</span>
+                            <span>◴ 45 דקות</span>
+                        </div>
+                    </article>
+
+                    <!-- משימה שנייה -->
+                    <article class="example-card">
+                        <div class="card-top">
+                            <div class="card-leading">
+                                <input
+                                    class="card-checkbox"
+                                    type="checkbox"
+                                    aria-label="סמן משימה כהושלמה">
+
+                                <button
+                                    class="card-menu"
+                                    type="button"
+                                    aria-label="אפשרויות למשימה">
+                                    ⋯
+                                </button>
+                            </div>
+
+                            <span class="card-score">86</span>
+                        </div>
+
+                        <h3>להכין את התוכנית ליום הבא</h3>
+
+                        <div class="card-tags">
+                            <span class="card-tag primary">מועד יעד מחר</span>
+                        </div>
+
+                        <div class="card-meta">
+                            <span>◷ מחר</span>
+                            <span>◴ 30 דקות</span>
+                        </div>
+                    </article>
+
+                    <!-- משימה שלישית -->
+                    <article class="example-card">
+                        <div class="card-top">
+                            <div class="card-leading">
+                                <input
+                                    class="card-checkbox"
+                                    type="checkbox"
+                                    aria-label="סמן משימה כהושלמה">
+
+                                <button
+                                    class="card-menu"
+                                    type="button"
+                                    aria-label="אפשרויות למשימה">
+                                    ⋯
+                                </button>
+                            </div>
+
+                            <span class="card-score">74</span>
+                        </div>
+
+                        <h3>להשלים משימה שחוסמת התקדמות</h3>
+
+                        <div class="card-tags">
+                            <span class="card-tag primary">חוסמת 2 משימות</span>
+                        </div>
+
+                        <div class="card-meta">
+                            <span>◷ השבוע</span>
+                            <span>◴ 60 דקות</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </aside>
+
+    </main>
 </body>
 </html>
