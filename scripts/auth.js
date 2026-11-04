@@ -22,6 +22,13 @@ const footerSwitch = document.getElementById("footer-switch");
 
 const forgotPassword = document.getElementById("forgot-password");
 
+/* Page to open after a successful login or registration */
+const TASKS_PAGE = "new-task.html";
+const SESSION_KEY = "smartTodos.session";
+
+/* Simulated server delay in milliseconds */
+const MOCK_DELAY_MS = 1200;
+
 let currentMode = "login";
 
 /* Hide the error message */
@@ -106,6 +113,25 @@ function setLoading(isLoading) {
             : "הרשמה";
 }
 
+/*
+  Mock authentication for development only.
+  Replace the body of this function with a real API call once a server exists.
+*/
+function mockAuthenticate(mode, email) {
+    return new Promise((resolve) => {
+        window.setTimeout(() => resolve({ mode, email }), MOCK_DELAY_MS);
+    });
+}
+
+/* Keep a minimal session marker. Never store the password. */
+function saveSession(email) {
+    try {
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify({ email }));
+    } catch {
+        /* Storage can be unavailable (e.g. private mode); the redirect still works. */
+    }
+}
+
 /* Form submission */
 form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -134,19 +160,15 @@ form.addEventListener("submit", (event) => {
 
     setLoading(true);
 
-    /*
-      This is a frontend demonstration only.
-      No authentication server is connected.
-    */
-    window.setTimeout(() => {
-        setLoading(false);
-
-        if (currentMode === "login") {
-            showError("האימייל או הסיסמה שגויים. נסו שוב.");
-        } else {
-            showError("שירות ההרשמה עדיין לא מחובר לשרת.");
-        }
-    }, 1200);
+    mockAuthenticate(currentMode, email)
+        .then(() => {
+            saveSession(email);
+            window.location.href = TASKS_PAGE;
+        })
+        .catch(() => {
+            setLoading(false);
+            showError("אירעה שגיאה. נסו שוב.");
+        });
 });
 
 /* Clear errors when the user edits the fields */
