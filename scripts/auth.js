@@ -21,6 +21,16 @@ const footerText = document.getElementById("footer-text");
 const footerSwitch = document.getElementById("footer-switch");
 
 const forgotPassword = document.getElementById("forgot-password");
+const authDefaultView = document.getElementById("auth-default-view");
+const recoveryView = document.getElementById("recovery-view");
+const recoverySentView = document.getElementById("recovery-sent-view");
+const recoveryForm = document.getElementById("recovery-form");
+const recoveryEmailInput = document.getElementById("recovery-email");
+const recoveryError = document.getElementById("recovery-error");
+const recoveryErrorText = document.getElementById("recovery-error-text");
+const recoveryTitle = document.getElementById("recovery-title");
+const recoverySentTitle = document.getElementById("recovery-sent-title");
+const resendFeedback = document.getElementById("resend-feedback");
 
 /* Page to open after a successful login or registration */
 const TASKS_PAGE = "new-task.html";
@@ -177,7 +187,51 @@ passwordInput.addEventListener("input", hideError);
 
 /* Forgot password */
 forgotPassword.addEventListener("click", () => {
-    showError("אפשרות איפוס הסיסמה תתווסף במסך המתאים.");
+    recoveryEmailInput.value = emailInput.value.trim();
+    errorMessage.hidden = true;
+    authDefaultView.hidden = true;
+    recoverySentView.hidden = true;
+    recoveryView.hidden = false;
+    recoveryError.hidden = true;
+    resendFeedback.hidden = true;
+    document.title = "משימות | שחזור סיסמה";
+    recoveryTitle.focus();
+});
+
+function returnToLogin() {
+    recoveryView.hidden = true;
+    recoverySentView.hidden = true;
+    authDefaultView.hidden = false;
+    setMode("login");
+    document.title = "משימות | כניסה לחשבון";
+    emailInput.focus();
+}
+
+document.getElementById("recovery-back").addEventListener("click", returnToLogin);
+document.getElementById("recovery-sent-back").addEventListener("click", returnToLogin);
+
+recoveryForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    recoveryError.hidden = true;
+
+    const email = recoveryEmailInput.value.trim();
+    if (!isValidEmail(email)) {
+        recoveryErrorText.textContent = "כתובת האימייל אינה תקינה.";
+        recoveryError.hidden = false;
+        recoveryEmailInput.focus();
+        return;
+    }
+
+    recoveryEmailInput.value = email;
+    recoveryView.hidden = true;
+    recoverySentView.hidden = false;
+    resendFeedback.hidden = true;
+    document.title = "משימות | קישור נשלח";
+    recoverySentTitle.focus();
+});
+
+document.getElementById("resend-recovery").addEventListener("click", () => {
+    resendFeedback.hidden = false;
 });
 
 /* Initial state */

@@ -88,6 +88,49 @@ input:focus-visible {
     line-height: 1.7;
 }
 
+.recovery-back {
+    margin-bottom: var(--spacing-xl);
+}
+
+.recovery-icon {
+    display: grid;
+    place-items: center;
+    width: var(--spacing-2xl);
+    height: var(--spacing-2xl);
+    margin: 0 auto var(--spacing-md);
+    border-radius: var(--radius-full);
+    color: var(--color-success);
+    background: var(--color-success-background);
+}
+
+.recovery-icon-svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+.recovery-sent-view {
+    text-align: center;
+}
+
+.recovery-message {
+    margin: 0 0 var(--spacing-xl);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-body);
+}
+
+.recovery-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-md);
+}
+
+.recovery-feedback {
+    margin-block-start: var(--spacing-md);
+    color: var(--color-success);
+    font-size: var(--font-size-sm);
+}
+
 /* Tabs */
 
 .auth-tabs {
