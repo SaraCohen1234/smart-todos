@@ -24,6 +24,7 @@
                     <span>משימות</span>
                 </a>
 
+                <div id="auth-default-view">
                 <header class="auth-heading">
                     <h1 id="form-title">כניסה לחשבון</h1>
                     <p id="form-subtitle">
@@ -125,6 +126,80 @@
                         להרשמה
                     </button>
                 </p>
+                </div>
+
+                <section class="recovery-view" id="recovery-view" aria-labelledby="recovery-title" hidden>
+                    <button class="text-button recovery-back" id="recovery-back" type="button">
+                        חזרה לכניסה
+                    </button>
+
+                    <header class="auth-heading">
+                        <h1 id="recovery-title" tabindex="-1">שחזור סיסמה</h1>
+                        <p>
+                            הזינו את כתובת האימייל שלכם ונשלח אליכם קישור לאיפוס הסיסמה.
+                        </p>
+                    </header>
+
+                    <form id="recovery-form">
+                        <div class="form-field">
+                            <label for="recovery-email">אימייל</label>
+                            <input
+                                id="recovery-email"
+                                name="email"
+                                type="email"
+                                placeholder="name@example.com"
+                                autocomplete="email"
+                                required>
+                        </div>
+
+                        <div
+                            class="error-message"
+                            id="recovery-error"
+                            role="alert"
+                            aria-live="polite"
+                            hidden>
+                            <span class="error-icon" aria-hidden="true">⚠</span>
+                            <span id="recovery-error-text"></span>
+                        </div>
+
+                        <button class="submit-button" type="submit">
+                            שליחת קישור איפוס
+                        </button>
+                    </form>
+                </section>
+
+                <section
+                    class="recovery-view recovery-sent-view"
+                    id="recovery-sent-view"
+                    aria-labelledby="recovery-sent-title"
+                    hidden>
+                    <span class="recovery-icon" aria-hidden="true">
+                        <svg class="recovery-icon-svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 6.75h18v10.5H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="m3.75 7.5 8.25 6 8.25-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+
+                    <header class="auth-heading">
+                        <h1 id="recovery-sent-title" tabindex="-1">בדקו את תיבת הדואר</h1>
+                        <p class="recovery-message">
+                            אם כתובת האימייל קיימת במערכת, נשלח אליה קישור לאיפוס הסיסמה.
+                        </p>
+                    </header>
+
+                    <div class="recovery-actions">
+                        <button class="submit-button" id="recovery-sent-back" type="button">
+                            חזרה לכניסה
+                        </button>
+                        <button class="text-button" id="resend-recovery" type="button">
+                            שליחה חוזרת
+                        </button>
+                    </div>
+
+                    <p class="recovery-feedback" id="resend-feedback" role="status" aria-live="polite" hidden>
+                        אם כתובת האימייל קיימת במערכת, נשלח אליה קישור נוסף.
+                    </p>
+                </section>
 
             </div>
         </section>
