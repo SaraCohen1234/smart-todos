@@ -43,7 +43,15 @@ smart-todos/
 ├── CLAUDE.md                      # הנחיות לעבודה עם Claude Code
 ├── GIT_WORKFLOW.md                # כללי עבודה עם Git
 ├── README.md
-└── index.html                     # נקודת הכניסה
+├── index.html                     # נקודת הכניסה (כניסה והרשמה)
+├── new-task.html                  # חלון משימה חדשה
+├── scripts/
+│   ├── auth.js                    # לוגיקת כניסה והרשמה
+│   └── new-task.js                # לוגיקת חלון משימה חדשה
+└── styles/
+    ├── tokens.css                 # משתני עיצוב משותפים
+    ├── auth.css                   # עיצוב כניסה והרשמה
+    └── new-task.css               # עיצוב חלון משימה חדשה
 ```
 
 ## הורדה והרצת הפרויקט
