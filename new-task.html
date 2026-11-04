@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>משימה חדשה · Smart Todos</title>
+  <link rel="stylesheet" href="styles/new-task-tokens.css">
+  <link rel="stylesheet" href="styles/new-task.css">
+  <script src="scripts/new-task.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <button class="primary-button" id="open-modal" type="button" aria-haspopup="dialog" aria-controls="task-dialog" aria-expanded="true"><span aria-hidden="true">＋</span> משימה חדשה</button>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <section class="modal" id="task-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="keyboard-hint">
+      <header class="modal-header">
+        <h2 class="modal-title" id="modal-title">משימה חדשה</h2>
+        <button class="close-button" id="close-modal" type="button" aria-label="סגירה">×</button>
+      </header>
+
+      <form id="task-form">
+        <div class="modal-body">
+          <div class="field">
+            <label class="field-label" for="task-title">כותרת <span class="required" aria-hidden="true">*</span><span class="visually-hidden"> (שדה חובה)</span></label>
+            <input class="field-control" id="task-title" name="title" type="text" maxlength="120" placeholder="למשל, להכין מצגת לפגישה" required autofocus aria-describedby="title-counter">
+            <div class="title-counter" id="title-counter" aria-live="polite">0 / 120 תווים</div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label class="field-label" for="due-date">מועד יעד</label>
+              <input class="field-control" id="due-date" name="dueDate" type="date">
+            </div>
+            <div class="field">
+              <label class="field-label" for="estimate">הערכת זמן</label>
+              <div>
+                <input class="field-control" id="estimate" name="estimate" type="number" min="1" placeholder="למשל, 60" aria-describedby="estimate-hint">
+                <span class="field-hint" id="estimate-hint">בדקות</span>
+              </div>
+            </div>
+          </div>
+
+          <fieldset class="field importance-field">
+            <legend class="field-label">חשיבות</legend>
+            <div class="importance-options" role="radiogroup" aria-label="חשיבות המשימה">
+              <button class="importance-option" type="button" role="radio" aria-checked="false" data-importance="low">נמוכה</button>
+              <button class="importance-option" type="button" role="radio" aria-checked="false" data-importance="normal">רגילה</button>
+              <button class="importance-option" type="button" role="radio" aria-checked="true" data-importance="high">גבוהה</button>
+              <button class="importance-option" type="button" role="radio" aria-checked="false" data-importance="urgent">דחופה</button>
+            </div>
+          </fieldset>
+
+          <section class="priority-card" aria-label="ציון עדיפות צפוי">
+            <span class="priority-icon" aria-hidden="true">✦</span>
+            <div class="priority-copy">
+              <p class="priority-title">ציון עדיפות צפוי</p>
+              <p class="priority-description" id="priority-description">לפי רמת החשיבות שבחרת</p>
+            </div>
+            <div class="priority-score"><span id="priority-score">72</span><small> / 100</small></div>
+          </section>
+
+          <button class="more-toggle" id="more-toggle" type="button" aria-expanded="false" aria-controls="extra-fields">
+            <span class="chevron" aria-hidden="true">⌄</span><span>עוד שדות</span>
+          </button>
+          <div class="extra-fields" id="extra-fields" hidden>
+            <div class="field">
+              <label class="field-label" for="tags">תגיות</label>
+              <input class="field-control" id="tags" name="tags" type="text" placeholder="הפרידי בין תגיות בפסיק">
+            </div>
+            <div class="field">
+              <label class="field-label" for="dependency">תלויה במשימה</label>
+              <input class="field-control" id="dependency" name="dependency" type="text" placeholder="שם המשימה">
+            </div>
+            <div class="field">
+              <label class="field-label" for="description">תיאור</label>
+              <textarea class="field-control description-control" id="description" name="description" placeholder="הוסיפי פרטים שיעזרו לך להשלים את המשימה"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <footer class="modal-footer">
+          <div class="keyboard-hint" id="keyboard-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> לשמירה <span aria-hidden="true">·</span> <kbd>Esc</kbd> לסגירה</div>
+          <div class="footer-actions">
+            <button class="secondary-button" id="cancel-modal" type="button">ביטול</button>
+            <button class="primary-button" type="submit"><span aria-hidden="true">✓</span> שמירה</button>
+          </div>
+        </footer>
+      </form>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+</body>
+</html>
