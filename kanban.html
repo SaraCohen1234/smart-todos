@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="לוח קנבן - ניהול משימות חכם">
+    <title>משימות | לוח קנבן</title>
+
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/kanban.css">
+
+    <script src="scripts/kanban.js" defer></script>
+</head>
+<body>
+    <div class="app-layout">
+        
+        <!-- סרגל כלים עליון -->
+        <header class="app-header">
+            <a class="brand" href="#" aria-label="משימות">
+                <span class="brand-icon" aria-hidden="true">✓</span>
+                <span>משימות</span>
+            </a>
+
+            <div class="header-actions">
+                <!-- מתג מעבר תצוגה -->
+                <div class="view-toggle" role="radiogroup" aria-label="תצוגת משימות">
+                    <button class="toggle-button" type="button" role="radio" aria-checked="false" id="view-list">
+                        רשימה
+                    </button>
+                    <button class="toggle-button active" type="button" role="radio" aria-checked="true" id="view-kanban">
+                        קנבן
+                    </button>
+                </div>
+
+                <a href="new-task.html" class="primary-button">+ משימה חדשה</a>
+            </div>
+        </header>
+
+        <!-- תוכן הלוח -->
+        <main class="kanban-container">
+            <header class="board-header">
+                <h1>לוח משימות</h1>
+                <p>התרשמות כוללת וניהול סטטוס המשימות שלך</p>
+            </header>
+
+            <section class="kanban-board" aria-label="לוח קנבן">
+                
+                <!-- עמודה 1: לביצוע -->
+                <div class="kanban-column" data-status="todo">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <h2>לביצוע</h2>
+                            <span class="task-count" id="count-todo">0</span>
+                        </div>
+                        <button class="add-task-btn" type="button" aria-label="הוסף משימה לביצוע">+</button>
+                    </div>
+                    <div class="column-content" id="column-todo">
+                        <!-- כרטיסי משימות יוזרקו לכאן דינמית -->
+                    </div>
+                </div>
+
+                <!-- עמודה 2: בתהליך -->
+                <div class="kanban-column" data-status="in-progress">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <h2>בתהליך</h2>
+                            <span class="task-count" id="count-in-progress">0</span>
+                        </div>
+                        <button class="add-task-btn" type="button" aria-label="הוסף משימה בתהליך">+</button>
+                    </div>
+                    <div class="column-content" id="column-in-progress">
+                        <!-- כרטיסי משימות יוזרקו לכאן דינמית -->
+                    </div>
+                </div>
+
+                <!-- עמודה 3: הושלם -->
+                <div class="kanban-column" data-status="done">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <h2>הושלם</h2>
+                            <span class="task-count" id="count-done">0</span>
+                        </div>
+                        <button class="add-task-btn" type="button" aria-label="הוסף משימה שהושלמה">+</button>
+                    </div>
+                    <div class="column-content" id="column-done">
+                        <!-- כרטיסי משימות יוזרקו לכאן דינמית -->
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>
