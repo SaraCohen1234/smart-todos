@@ -3,66 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>כל המשימות · Smart Todos</title>
+    <meta name="description" content="משימות - ניהול משימות חכם">
+    <title>משימות | כניסה לחשבון</title>
+
     <link rel="stylesheet" href="styles/tokens.css">
-    <!-- תוכלו להוסיף כאן קבצי CSS נוספים לפי הצורך -->
+    <link rel="stylesheet" href="styles/auth.css">
+
+    <script src="scripts/auth.js" defer></script>
 </head>
+
 <body>
-    <main class="page-shell" style="padding: 24px; font-family: system-ui, sans-serif;">
-        <!-- כותרת ראשית וכפתור משימה חדשה -->
-        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-            <div>
-                <h1 style="margin: 0; font-size: 24px; font-weight: bold;">כל המשימות</h1>
-                <p style="margin: 4px 0 0; color: #666; font-size: 14px;">18 משימות פתוחות - ממוינות לפי ציון עדיפות</p>
+    <main class="auth-layout">
+
+        <!-- צד ימין: טופס כניסה והרשמה -->
+        <section class="auth-section">
+            <div class="auth-container">
+
+                <a class="brand" href="#" aria-label="משימות">
+                    <span class="brand-icon" aria-hidden="true">✓</span>
+                    <span>משימות</span>
+                </a>
+
+                <div id="auth-default-view">
+                <header class="auth-heading">
+                    <h1 id="form-title">כניסה לחשבון</h1>
+                    <p id="form-subtitle">
+                        המשימות שלך, מתועדפות אוטומטית לפי מה שחשוב באמת.
+                    </p>
+                </header>
+
+                <div class="auth-tabs" role="tablist" aria-label="בחירת פעולה">
+                    <button
+                        class="tab-button active"
+                        id="login-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="true"
+                        aria-controls="auth-form"
+                        data-mode="login">
+                        כניסה
+                    </button>
+
+                    <button
+                        class="tab-button"
+                        id="register-tab"
+                        type="button"
+                        role="tab"
+                        aria-selected="false"
+                        aria-controls="auth-form"
+                        data-mode="register">
+                        הרשמה
+                    </button>
+                </div>
+
+                <form id="auth-form" novalidate>
+
+                    <div class="form-field">
+                        <label for="email">אימייל</label>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="name@example.com"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="password">סיסמה</label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            placeholder="הכניסו סיסמה"
+                            autocomplete="current-password"
+                            required>
+                        <span class="field-hint">לפחות 8 תווים</span>
+                    </div>
+
+                    <div class="form-options" id="login-options">
+                        <label class="remember-option">
+                            <input type="checkbox" id="remember" name="remember">
+                            <span>זכור אותי</span>
+                        </label>
+
+                        <button
+                            class="text-button"
+                            type="button"
+                            id="forgot-password">
+                            שכחתי סיסמה
+                        </button>
+                    </div>
+
+                    <div
+                        class="error-message"
+                        id="error-message"
+                        role="alert"
+                        aria-live="polite"
+                        hidden>
+                        <span class="error-icon" aria-hidden="true">⚠</span>
+                        <span id="error-text">
+                            האימייל או הסיסמה שגויים. נסו שוב.
+                        </span>
+                    </div>
+
+                    <button
+                        class="submit-button"
+                        id="submit-button"
+                        type="submit">
+                        <span class="button-text">כניסה</span>
+                        <span class="loading-spinner" aria-hidden="true"></span>
+                    </button>
+
+                </form>
+
+                <p class="auth-footer">
+                    <span id="footer-text">אין לך חשבון עדיין?</span>
+                    <button
+                        class="text-button"
+                        id="footer-switch"
+                        type="button">
+                        להרשמה
+                    </button>
+                </p>
+                </div>
+
+                <section class="recovery-view" id="recovery-view" aria-labelledby="recovery-title" hidden>
+                    <button class="text-button recovery-back" id="recovery-back" type="button">
+                        חזרה לכניסה
+                    </button>
+
+                    <header class="auth-heading">
+                        <h1 id="recovery-title" tabindex="-1">שחזור סיסמה</h1>
+                        <p>
+                            הזינו את כתובת האימייל שלכם ונשלח אליכם קישור לאיפוס הסיסמה.
+                        </p>
+                    </header>
+
+                    <form id="recovery-form">
+                        <div class="form-field">
+                            <label for="recovery-email">אימייל</label>
+                            <input
+                                id="recovery-email"
+                                name="email"
+                                type="email"
+                                placeholder="name@example.com"
+                                autocomplete="email"
+                                required>
+                        </div>
+
+                        <div
+                            class="error-message"
+                            id="recovery-error"
+                            role="alert"
+                            aria-live="polite"
+                            hidden>
+                            <span class="error-icon" aria-hidden="true">⚠</span>
+                            <span id="recovery-error-text"></span>
+                        </div>
+
+                        <button class="submit-button" type="submit">
+                            שליחת קישור איפוס
+                        </button>
+                    </form>
+                </section>
+
+                <section
+                    class="recovery-view recovery-sent-view"
+                    id="recovery-sent-view"
+                    aria-labelledby="recovery-sent-title"
+                    hidden>
+                    <span class="recovery-icon" aria-hidden="true">
+                        <svg class="recovery-icon-svg" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 6.75h18v10.5H3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="m3.75 7.5 8.25 6 8.25-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+
+                    <header class="auth-heading">
+                        <h1 id="recovery-sent-title" tabindex="-1">בדקו את תיבת הדואר</h1>
+                        <p class="recovery-message">
+                            אם כתובת האימייל קיימת במערכת, נשלח אליה קישור לאיפוס הסיסמה.
+                        </p>
+                    </header>
+
+                    <div class="recovery-actions">
+                        <button class="submit-button" id="recovery-sent-back" type="button">
+                            חזרה לכניסה
+                        </button>
+                        <button class="text-button" id="resend-recovery" type="button">
+                            שליחה חוזרת
+                        </button>
+                    </div>
+
+                    <p class="recovery-feedback" id="resend-feedback" role="status" aria-live="polite" hidden>
+                        אם כתובת האימייל קיימת במערכת, נשלח אליה קישור נוסף.
+                    </p>
+                </section>
+
             </div>
-            <button class="primary-button" type="button" style="background-color: #2563eb; color: white; border: none; padding: 10px 16px; border-radius: 6px; font-weight: bold; cursor: pointer;">
-                ＋ משימה חדשה
-            </button>
-        </header>
-
-        <!-- סרגל כלים: חיפוש ומסננים -->
-        <section style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
-            <input type="search" placeholder="חיפוש בכותרת ובתיאור..." style="flex: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px;">
-            <select style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px;"><option>סטטוס: פתוחות</option></select>
-            <select style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px;"><option>תגיות</option></select>
-            <select style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px;"><option>מועד יעד</option></select>
-            <select style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px;"><option>חיוויים</option></select>
-            <select style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px;"><option>מיון: ציון עדיפות</option></select>
         </section>
 
-        <!-- טבלת משימות ראשית -->
-        <section style="background: white; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
-            <table style="width: 100%; border-collapse: collapse; text-align: right;">
-                <thead>
-                    <tr style="background: #f9fafb; border-bottom: 1px solid #e5e7eb; font-size: 14px; color: #4b5563;">
-                        <th style="padding: 12px;"><input type="checkbox"></th>
-                        <th style="padding: 12px;">כותרת</th>
-                        <th style="padding: 12px;">סטטוס</th>
-                        <th style="padding: 12px;">מועד יעד</th>
-                        <th style="padding: 12px;">חיוויים</th>
-                        <th style="padding: 12px;">תגיות</th>
-                    </tr>
-                </thead>
-                <tbody style="font-size: 14px;">
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 12px;"><input type="checkbox"></td>
-                        <td style="padding: 12px; font-weight: 500;">תיקון באג בשימרית טופס ההרשמה</td>
-                        <td style="padding: 12px;"><span style="background: #e0f2fe; color: #0369a1; padding: 4px 8px; border-radius: 4px; font-size: 12px;">לביצוע</span></td>
-                        <td style="padding: 12px; color: #dc2626;">באיחור</td>
-                        <td style="padding: 12px;">Frontend</td>
-                        <td style="padding: 12px;">באג</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 12px;"><input type="checkbox"></td>
-                        <td style="padding: 12px; font-weight: 500;">סקירת קוד - עמוד הרשמה</td>
-                        <td style="padding: 12px;"><span style="background: #fef3c7; color: #b45309; padding: 4px 8px; border-radius: 4px; font-size: 12px;">במהלך</span></td>
-                        <td style="padding: 12px;">מחר</td>
-                        <td style="padding: 12px;">Code Review</td>
-                        <td style="padding: 12px;">-</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <!-- צד שמאל: פאנל כחול וכרטיסי משימות -->
+        <aside class="promo-section">
+            <div class="promo-content">
+
+                <header class="promo-heading">
+                    <h2>במה לעבוד עכשיו?</h2>
+
+                    <p class="promo-description">
+                        המערכת מתעדפת עבורך את המשימות החשובות ביותר,
+                        כדי שתדע במה כדאי להתמקד עכשיו ומה דורש את תשומת הלב שלך.
+                    </p>
+                </header>
+
+                <div class="example-cards">
+
+                    <!-- משימה ראשונה: באיחור -->
+                    <article class="example-card overdue">
+                        <div class="card-top">
+                            <div class="card-leading">
+                                <input
+                                    class="card-checkbox"
+                                    type="checkbox"
+                                    aria-label="סמן משימה כהושלמה">
+
+                                <button
+                                    class="card-menu"
+                                    type="button"
+                                    aria-label="אפשרויות למשימה">
+                                    ⋯
+                                </button>
+                            </div>
+
+                            <span class="card-score">92</span>
+                        </div>
+
+                        <h3>להשלים את המשימה החשובה ביותר</h3>
+
+                        <div class="card-tags">
+                            <span class="card-tag warning">באיחור</span>
+                        </div>
+
+                        <div class="card-meta">
+                            <span>◷ מועד יעד: אתמול</span>
+                            <span>◴ 45 דקות</span>
+                        </div>
+                    </article>
+
+                    <!-- משימה שנייה -->
+                    <article class="example-card">
+                        <div class="card-top">
+                            <div class="card-leading">
+                                <input
+                                    class="card-checkbox"
+                                    type="checkbox"
+                                    aria-label="סמן משימה כהושלמה">
+
+                                <button
+                                    class="card-menu"
+                                    type="button"
+                                    aria-label="אפשרויות למשימה">
+                                    ⋯
+                                </button>
+                            </div>
+
+                            <span class="card-score">86</span>
+                        </div>
+
+                        <h3>להכין את התוכנית ליום הבא</h3>
+
+                        <div class="card-tags">
+                            <span class="card-tag primary">מועד יעד מחר</span>
+                        </div>
+
+                        <div class="card-meta">
+                            <span>◷ מחר</span>
+                            <span>◴ 30 דקות</span>
+                        </div>
+                    </article>
+
+                    <!-- משימה שלישית -->
+                    <article class="example-card">
+                        <div class="card-top">
+                            <div class="card-leading">
+                                <input
+                                    class="card-checkbox"
+                                    type="checkbox"
+                                    aria-label="סמן משימה כהושלמה">
+
+                                <button
+                                    class="card-menu"
+                                    type="button"
+                                    aria-label="אפשרויות למשימה">
+                                    ⋯
+                                </button>
+                            </div>
+
+                            <span class="card-score">74</span>
+                        </div>
+
+                        <h3>להשלים משימה שחוסמת התקדמות</h3>
+
+                        <div class="card-tags">
+                            <span class="card-tag primary">חוסמת 2 משימות</span>
+                        </div>
+
+                        <div class="card-meta">
+                            <span>◷ השבוע</span>
+                            <span>◴ 60 דקות</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </aside>
+
     </main>
 </body>
 </html>
