@@ -33,7 +33,7 @@ const recoverySentTitle = document.getElementById("recovery-sent-title");
 const resendFeedback = document.getElementById("resend-feedback");
 
 /* Page to open after a successful login or registration */
-const TASKS_PAGE = "new-task.html";
+const TASKS_PAGE = "tasks.html";
 const SESSION_KEY = "smartTodos.session";
 
 /* Simulated server delay in milliseconds */

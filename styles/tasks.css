@@ -1,0 +1,118 @@
+.page-shell {
+    padding: var(--spacing-lg);
+    font-family: var(--font-family);
+    color: var(--color-text);
+    background: var(--color-background-soft);
+    min-height: 100vh;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.page-title {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    font-weight: bold;
+}
+
+.page-subtitle {
+    margin: var(--spacing-xs) 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.primary-button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    padding: var(--spacing-smd) var(--spacing-md);
+    border-radius: var(--radius-xs);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color var(--transition);
+}
+
+.primary-button:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.toolbar {
+    display: flex;
+    gap: var(--spacing-smd);
+    margin-bottom: var(--spacing-mdl);
+    flex-wrap: wrap;
+}
+
+.toolbar-search {
+    flex: 1;
+}
+
+.toolbar-search,
+.toolbar-select {
+    padding: var(--spacing-sm) var(--spacing-smd);
+    border: var(--border-width) solid var(--color-border-strong);
+    border-radius: var(--radius-xs);
+    background: var(--color-white);
+    font-family: inherit;
+}
+
+.tasks-card {
+    background: var(--color-white);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.tasks-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+}
+
+.tasks-table th,
+.tasks-table td {
+    padding: var(--spacing-smd);
+}
+
+.tasks-table thead tr {
+    background: var(--color-background-soft);
+    border-bottom: var(--border-width) solid var(--color-border);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+}
+
+.tasks-table tbody {
+    font-size: var(--font-size-sm);
+}
+
+.tasks-table tbody tr {
+    border-bottom: var(--border-width) solid var(--color-card-border);
+}
+
+.task-title {
+    font-weight: 500;
+}
+
+.task-overdue {
+    color: var(--color-error);
+}
+
+.status-badge {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-xs);
+    font-size: var(--font-size-xs);
+}
+
+.status-todo {
+    background: var(--color-primary-light);
+    color: var(--color-primary-dark);
+}
+
+.status-in-progress {
+    background: var(--color-warning-background);
+    color: var(--color-warning);
+}
