@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כל המשימות · Smart Todos</title>
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/tasks.css">
+</head>
+<body>
+    <main class="page-shell">
+        <!-- כותרת ראשית וכפתור משימה חדשה -->
+        <header class="page-header">
+            <div>
+                <h1 class="page-title">כל המשימות</h1>
+                <p class="page-subtitle">18 משימות פתוחות - ממוינות לפי ציון עדיפות</p>
+            </div>
+            <a class="primary-button" href="new-task.html">＋ משימה חדשה</a>
+        </header>
+
+        <!-- סרגל כלים: חיפוש ומסננים -->
+        <section class="toolbar" aria-label="חיפוש ומסננים">
+            <input class="toolbar-search" type="search" placeholder="חיפוש בכותרת ובתיאור..." aria-label="חיפוש">
+            <select class="toolbar-select" aria-label="סטטוס"><option>סטטוס: פתוחות</option></select>
+            <select class="toolbar-select" aria-label="תגיות"><option>תגיות</option></select>
+            <select class="toolbar-select" aria-label="מועד יעד"><option>מועד יעד</option></select>
+            <select class="toolbar-select" aria-label="חיוויים"><option>חיוויים</option></select>
+            <select class="toolbar-select" aria-label="מיון"><option>מיון: ציון עדיפות</option></select>
+        </section>
+
+        <!-- טבלת משימות ראשית -->
+        <section class="tasks-card">
+            <table class="tasks-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" aria-label="בחירת הכול"></th>
+                        <th>כותרת</th>
+                        <th>סטטוס</th>
+                        <th>מועד יעד</th>
+                        <th>חיוויים</th>
+                        <th>תגיות</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" aria-label="בחירת משימה"></td>
+                        <td class="task-title">תיקון באג בשימרית טופס ההרשמה</td>
+                        <td><span class="status-badge status-todo">לביצוע</span></td>
+                        <td class="task-overdue">באיחור</td>
+                        <td>Frontend</td>
+                        <td>באג</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" aria-label="בחירת משימה"></td>
+                        <td class="task-title">סקירת קוד - עמוד הרשמה</td>
+                        <td><span class="status-badge status-in-progress">במהלך</span></td>
+                        <td>מחר</td>
+                        <td>Code Review</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

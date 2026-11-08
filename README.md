@@ -44,6 +44,7 @@ smart-todos/
 ├── GIT_WORKFLOW.md                # כללי עבודה עם Git
 ├── README.md
 ├── index.html                     # נקודת הכניסה (כניסה והרשמה)
+├── tasks.html                     # רשימת המשימות
 ├── new-task.html                  # חלון משימה חדשה
 ├── scripts/
 │   ├── auth.js                    # לוגיקת כניסה והרשמה
@@ -51,7 +52,8 @@ smart-todos/
 └── styles/
     ├── tokens.css                 # משתני עיצוב משותפים
     ├── auth.css                   # עיצוב כניסה והרשמה
-    └── new-task.css               # עיצוב חלון משימה חדשה
+    ├── new-task.css               # עיצוב חלון משימה חדשה
+    └── tasks.css                  # עיצוב רשימת המשימות
 ```
 
 ## הורדה והרצת הפרויקט
